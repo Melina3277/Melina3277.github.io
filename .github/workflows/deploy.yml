@@ -22,18 +22,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código fuente
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v4
 
       - name: Subir contenido del sitio
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
       - name: Desplegar sitio
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
+
 
 
