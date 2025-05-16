@@ -10,20 +10,29 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código fuente
         uses: actions/checkout@v3
 
-      - name: Configurar GitHub Pages
+      - name: Configurar Pages
         uses: actions/configure-pages@v2
 
-      - name: Subir contenido de la carpeta raíz
+      - name: Subir contenido del sitio
         uses: actions/upload-pages-artifact@v2
         with:
           path: .
 
-      - name: Desplegar a GitHub Pages
+      - name: Desplegar sitio
+        id: deployment
         uses: actions/deploy-pages@v2
+
