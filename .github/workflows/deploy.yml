@@ -1,0 +1,29 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Cambia a 'master' si ese es tu branch principal
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v2
+
+      - name: Subir contenido
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'
+
+      - name: Desplegar en GitHub Pages
+        uses: actions/deploy-pages@v2

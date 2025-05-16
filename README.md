@@ -1,110 +1,112 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/gerald122012/gerald122012.github.io?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/Melina3277/Melina3277.github.io?style=for-the-badge)
 ![GitHub pages](https://img.shields.io/badge/Deployed-GitHub%20Pages-blue?style=for-the-badge)
 ![TDD Implementado](https://img.shields.io/badge/TDD-Test%20Driven%20Development-green?style=for-the-badge)
 ![Login Seguro](https://img.shields.io/badge/Login-Seguro%20con%20JSON-important?style=for-the-badge)
 
-# 🔒 Proyecto: Sistema de Login Seguro para Acceso a Portafolios del Grupo G
+# 🔒 Proyecto: Sistema de Login Seguro para Acceso a Portafolios Personales
 
 ## 📚 Descripción General
 
-Este proyecto implementa un sistema de login seguro para el repositorio [gerald122012.github.io](https://gerald122012.github.io/), permitiendo el acceso controlado a los portafolios del grupo.  
-El acceso es protegido mediante autenticación de usuarios almacenados en un archivo JSON, validado usando una mini librería `ORM.js` personalizada, y gestión de sesiones en `localStorage`.  
-Además, se aplican principios de **TDD** (Test Driven Development) mediante pruebas automáticas visibles.
+Este proyecto implementa un sistema de login seguro desplegado en [melina3277.github.io](https://melina3277.github.io/), que permite el acceso restringido a contenidos personales mediante autenticación de usuarios.  
+Utiliza archivos JSON como base de datos ligera y una librería personalizada `ORM.js` para gestionar los datos. El control de acceso está respaldado con validación automática y pruebas unitarias bajo el enfoque **TDD**.
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Objetivos del Proyecto
 
 - Implementar control de acceso seguro basado en JSON.
-- Aplicar un **ORM modular** para manejar datos.
-- Gestionar sesión del usuario usando `localStorage`.
-- Realizar pruebas de carga y validación usando TDD.
-- Desplegar todo el proyecto en **GitHub Pages**.
+- Usar un **ORM modular** para manipulación de usuarios.
+- Proteger el acceso mediante `localStorage`.
+- Aplicar ciclo TDD completo: Red-Green-Refactor.
+- Automatizar pruebas con **GitHub Actions**.
+- Desplegar el sitio de forma continua en **GitHub Pages**.
 
 ---
 
-## 🗂️ Estructura del Proyecto
+## 🧩 Estructura del Proyecto
 
-
-- `index.html`: Página pública de bienvenida y acceso.
-- `login.html`: Formulario de login con validación ORM.
-- `success.html`: Página protegida, accesible solo después del login exitoso.
-- `assets/js/orm.js`: Librería de carga de datos desde JSON.
-- `assets/js/login.js`: Script de autenticación de usuarios.
-- `assets/js/users.json`: Base de datos local de usuarios.
-- `assets/css/styles.css`: Estilos centralizados en dark mode.
-- `tests/orm.test.js`: Pruebas de carga de usuarios (TDD visual).
+- `index.html`: Página pública de inicio.
+- `login.html`: Formulario de autenticación.
+- `success.html`: Página privada, accesible tras login válido.
+- `assets/js/login.js`: Lógica de validación y control de sesión.
+- `assets/js/orm.js`: Módulo que carga y analiza datos desde JSON.
+- `assets/js/users.json`: Base de datos de usuarios.
+- `assets/css/styles.css`: Estilos centralizados.
+- `tests/login.test.js`: Pruebas unitarias del proceso de login.
+- `tests/orm.test.js`: Validación de carga de usuarios.
 
 ---
 
 ## 🔑 Proceso de Autenticación
 
-1. El usuario accede a `login.html`.
-2. El sistema carga `users.json` usando `ORM.js`.
-3. Se validan las credenciales del usuario.
-4. Si el login es exitoso:
-   - Se guarda un token (`isAuthenticated=true`) en `localStorage`.
-   - Se redirige automáticamente a `success.html`.
-5. Si el usuario intenta acceder sin autenticación:
-   - El sistema lo redirige a `login.html`.
+1. Usuario ingresa a `login.html`.
+2. Se carga `users.json` usando `ORM.js`.
+3. El usuario ingresa sus credenciales.
+4. Si son correctas:
+   - Se guarda la sesión en `localStorage`.
+   - Se redirige a `success.html`.
+5. Si no está autenticado:
+   - Se fuerza redirección a `login.html`.
 
 ---
 
-## 🧪 Implementación de TDD (Test Driven Development)
+## 🧪 Ciclo TDD Aplicado
 
-- En `tests/orm.test.js`, se carga automáticamente el `users.json`.
-- Se muestra un resultado visual:
-  - ✅ ORM funcionando correctamente
-  - ⚠️ Advertencia si hay problemas
-  - ❌ Error en carga de datos
+- **Red**: Se crean pruebas que fallan inicialmente (`login.test.js`, `orm.test.js`).
+- **Green**: Se implementa la lógica mínima para que pasen.
+- **Refactor**: Se mejora y modulariza el código, agregando validación con `.trim()` y funciones reutilizables (`showMessage()`).
 
-**Resultado esperado:**
+### 💻 Resultados esperados en consola
 
 ```bash
-✅ ORM funcionando correctamente
+🟢 Login correcto debería pasar
+🔴 Login incorrecto debería fallar
+✅ users.json cargado correctamente.
+```
 
-Prueba visible en la sección de login (#test-results).
+✔️ Estas pruebas son visibles en la consola local y en **GitHub Actions**.
 
-🚀 Despliegue en GitHub Pages
-El proyecto está desplegado desde la rama main usando GitHub Pages.
+---
 
-Página pública: https://gerald122012.github.io/  
+## 🔄 Integración Continua (CI) y Despliegue (CD)
 
-🧰 Herramientas Utilizadas
-Git y GitHub: Control de versiones y repositorio remoto.
+Este repositorio integra dos flujos automáticos mediante GitHub Actions:
 
-GitHub Actions: Automatización de despliegue.
+- `node-tests.yml`: Ejecuta pruebas unitarias cada vez que se hace push.
+- `deploy.yml`: Publica automáticamente el sitio en GitHub Pages si las pruebas pasan.
 
-GitFlow: Estructura de trabajo colaborativo.
+---
 
-Jekyll (Minima theme): Motor de despliegue en Pages.
+## 🚀 GitHub Pages
 
-HTML5, CSS3, JavaScript ES6: Tecnologías de frontend.
+El sitio está desplegado automáticamente desde la rama `main`.
 
-FontAwesome: Iconografía profesional.
+🔗 Página: [https://melina3277.github.io](https://melina3277.github.io)
 
-TDD y pruebas automáticas: Validación de carga de datos.
+---
 
-🔥 Mejoras Futuras
-Implementar cifrado de contraseñas.
+## 🛠️ Herramientas Utilizadas
 
-Añadir expiración automática de sesiones.
+- **HTML5, CSS3, JS (ES6)**
+- **Git y GitHub**
+- **GitHub Actions**
+- **Test Driven Development**
+- **Jekyll (Tema Minima)**
+- **Visual Studio Code**
 
-Gestionar roles de usuario (Admin, Viewer).
+---
 
-Migrar a un backend real (Node.js, Express.js) para producción.
+## 🔮 Mejoras Futuras
 
-👨‍💻 Autores
-Gerald (gerald122012)
+- Cifrado de contraseñas.
+- Roles de usuario (admin, lector).
+- Expiración de sesión.
+- Backend real con Express.js o Firebase.
 
-Ángel (angeltito)
+---
 
-Jasimon (Jasimon27)
+## 👩‍💻 Autora
 
-Moran (Moran3277)
-
-Miguel (Miguel25-bot)
-
-Construido con 💻, colaboración en equipo y buenas prácticas de desarrollo de software.
-
+Silvia Melina Morán Ángeles  
+Proyecto académico realizado con buenas prácticas de desarrollo de software, pruebas automatizadas y despliegue continuo.
 

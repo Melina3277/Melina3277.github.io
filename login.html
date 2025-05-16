@@ -1,98 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión - Portafolio Grupo G</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script src="assets/js/login.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Portafolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
       background-color: #0e1117;
       color: #e5e7eb;
+      font-family: 'Inter', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
       height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background-color: #1f2937;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      width: 300px;
       text-align: center;
     }
+
     h2 {
       margin-bottom: 20px;
-      color: #60a5fa;
-      font-size: 32px;
+      color: #22c55e;
     }
-    form {
-      background-color: #1f2937;
-      padding: 40px 30px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 400px;
-    }
+
     input {
-      margin-bottom: 20px;
-      padding: 15px;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
       border: none;
-      border-radius: 5px;
+      background-color: #374151;
+      color: white;
       font-size: 16px;
     }
-    button {
-      padding: 15px;
+
+    .login-button {
       background-color: #2563eb;
       color: white;
+      padding: 10px;
+      width: 100%;
       border: none;
-      border-radius: 5px;
-      font-size: 18px;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-top: 10px;
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+      transition: background 0.3s;
     }
-    button:hover {
+
+    .login-button:hover {
       background-color: #1d4ed8;
-      transform: scale(1.05);
     }
-    #message {
-      margin-top: 20px;
-      font-weight: bold;
+
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
     }
+
     .success {
       color: #22c55e;
     }
+
     .error {
       color: #ef4444;
-    }
-    #test-results {
-      margin-top: 40px;
-      font-size: 16px;
-      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <h2><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</h2>
+  <div class="login-box">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Usuario" required />
+      <input type="password" id="password" placeholder="Contraseña" required />
+      <button type="submit" class="login-button">Acceder</button>
+    </form>
+    <div class="message" id="message"></div>
+  </div>
 
-  <form id="loginForm">
-    <input type="text" id="username" placeholder="Usuario" required>
-    <input type="password" id="password" placeholder="Contraseña" required>
-    <button type="submit">Entrar</button>
-  </form>
-
-  <div id="message"></div>
-
-  <!-- Aquí se mostrarán los resultados de prueba de carga de usuarios -->
-  <div id="test-results"></div>
-
-  <!-- Cargar ORM y Prueba de ORM -->
+  <!-- Carga del ORM primero -->
   <script src="assets/js/orm.js"></script>
-  <script src="tests/orm.test.js"></script>
-
+  <!-- Luego el script que usa el ORM -->
+  <script src="assets/js/login.js"></script>
 </body>
 </html>
+

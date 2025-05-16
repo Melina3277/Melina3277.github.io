@@ -1,23 +1,24 @@
 [
   {
-    "username": "gerald",
-    "password": "1234"
-  },
-  {
     "username": "admin",
-    "password": "adminpass"
+    "password": "1234",
+    "role": "Administrador"
   },
   {
-    "username": "miguel",
-    "password": "miguelpass"
+    "username": "user1",
+    "password": "1111",
+    "role": "Invitado"
   },
   {
-    "username": "angeltito",
-    "password": "angel123"
+    "username": "user2",
+    "password": "2222",
+    "role": "Invitado"
   },
   {
-    "username": "jasimon",
-    "password": "jasi321"
+    "username": "user3",
+    "password": "3333",
+    "role": "Invitado"
   }
 ]
+
 
